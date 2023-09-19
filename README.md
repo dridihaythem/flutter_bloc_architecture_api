@@ -13,3 +13,7 @@ I used many concepts :
 - MultiBlocListener
 - Bloc Builder
 - Bloc to Bloc Communication
+
+# Download
+
+You can check [all releases](https://github.com/dridihaythem/flutter_bloc_architecture_api/releases) Or directly download the last release APK [here](https://github.com/dridihaythem/flutter_bloc_architecture_api/releases/latest/download/app-release.apk)
