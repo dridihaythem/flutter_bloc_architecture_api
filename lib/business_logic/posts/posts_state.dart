@@ -11,3 +11,5 @@ final class PostsLoaded extends PostsState {
   final List<Post> posts;
   PostsLoaded(this.posts);
 }
+
+final class PostsError extends PostsState {}

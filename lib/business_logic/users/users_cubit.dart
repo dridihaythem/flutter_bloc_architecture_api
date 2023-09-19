@@ -11,8 +11,12 @@ class UsersCubit extends Cubit<UsersState> {
   UsersCubit(this._usersRepository) : super(UsersInitial());
 
   void getAllUsers() async {
-    emit(UsersLoading());
-    List<User> users = await _usersRepository.getAllUsers();
-    emit(UsersLoaded(users));
+    try {
+      emit(UsersLoading());
+      List<User> users = await _usersRepository.getAllUsers();
+      emit(UsersLoaded(users));
+    } catch (e) {
+      emit(UsersError());
+    }
   }
 }

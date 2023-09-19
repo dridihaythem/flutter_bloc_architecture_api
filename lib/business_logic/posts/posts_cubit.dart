@@ -20,8 +20,12 @@ class PostsCubit extends Cubit<PostsState> {
   }
 
   void getAllPosts(List<User> users) async {
-    emit(PostsLoading());
-    List<Post> posts = await _postsRepository.getAllPosts(users);
-    emit(PostsLoaded(posts));
+    try {
+      emit(PostsLoading());
+      List<Post> posts = await _postsRepository.getAllPosts(users);
+      emit(PostsLoaded(posts));
+    } catch (e) {
+      emit(PostsError());
+    }
   }
 }

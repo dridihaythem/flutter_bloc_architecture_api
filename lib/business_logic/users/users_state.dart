@@ -11,3 +11,5 @@ final class UsersLoaded extends UsersState {
   final List<User> users;
   UsersLoaded(this.users);
 }
+
+final class UsersError extends UsersState {}
