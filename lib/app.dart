@@ -1,6 +1,9 @@
 import 'package:bloc_architecture/business_logic/app/app_cubit.dart';
+import 'package:bloc_architecture/business_logic/posts/posts_cubit.dart';
 import 'package:bloc_architecture/business_logic/users/users_cubit.dart';
+import 'package:bloc_architecture/data/dataproviders/posts_data_provider.dart';
 import 'package:bloc_architecture/data/dataproviders/users_data_provider.dart';
+import 'package:bloc_architecture/data/repositories/posts_repository.dart';
 import 'package:bloc_architecture/data/repositories/users_repository.dart';
 import 'package:bloc_architecture/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +17,14 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
-          create: (context) => UsersRepository(UsersDataProvider()),
+          create: (context) => UsersRepository(
+            UsersDataProvider(),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => PostsRepository(
+            PostsDataProvider(),
+          ),
         )
       ],
       child: MultiBlocProvider(
@@ -26,6 +36,12 @@ class App extends StatelessWidget {
             create: (context) =>
                 UsersCubit(context.read<UsersRepository>())..getAllUsers(),
             lazy: false,
+          ),
+          BlocProvider(
+            create: (context) => PostsCubit(
+              context.read<UsersCubit>(),
+              context.read<PostsRepository>(),
+            ),
           )
         ],
         child: const MaterialApp(

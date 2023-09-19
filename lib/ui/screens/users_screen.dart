@@ -17,7 +17,7 @@ class UsersScreen extends StatelessWidget {
             itemCount: state.users.length,
           );
         } else if (state is UsersLoading) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         } else {
           return Container();
         }

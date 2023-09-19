@@ -23,14 +23,22 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
-      body: BlocBuilder<AppCubit, AppState>(
-        buildWhen: (previous, current) =>
-            current is AppBottomNavigationBarChanged,
-        builder: (context, state) {
-          return context
-              .read<AppCubit>()
-              .pages[(state as AppBottomNavigationBarChanged).index];
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: BlocBuilder<AppCubit, AppState>(
+          buildWhen: (previous, current) =>
+              current is AppBottomNavigationBarChanged,
+          builder: (context, state) {
+            return Container(
+              constraints: BoxConstraints(
+                minWidth: MediaQuery.of(context).size.height,
+              ),
+              child: context
+                  .read<AppCubit>()
+                  .pages[(state as AppBottomNavigationBarChanged).index],
+            );
+          },
+        ),
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(),
     );
