@@ -1,16 +1,15 @@
-# bloc_architecture
+# About
 
-A new Flutter project.
+This is a simple Flutter app that fetches user and post data from the fake API at https://jsonplaceholder.typicode.com.
 
-## Getting Started
+This app is an implementation of the bloc architecture (Presentation,Business Logic,Data layer)
 
-This project is a starting point for a Flutter application.
+Data layer was split into 3 layers : Model, Repository and DataProvider.
 
-A few resources to get you started if this is your first Flutter project:
+I used many concepts :
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- MultiRepositoryProvider
+- MultiBlocProvider
+- MultiBlocListener
+- Bloc Builder
+- Bloc to Bloc Communication
